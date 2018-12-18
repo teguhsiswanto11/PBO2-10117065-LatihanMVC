@@ -19,23 +19,16 @@ public class PelangganModel {
     private String nama;
     private String email;
     private String noTelp;
+    private PelangganListener listener;
 
-    private PelangganListener pelangganListener;
 
-    public PelangganListener getPelangganListener() {
-        return pelangganListener;
+    public PelangganListener getListener() {
+        return listener;
     }
 
-    public void setPelangganListener(PelangganListener pelangganListener) {
-        this.pelangganListener = pelangganListener;
-    }
-    
-    protected void fireOnChange(){
-        if(pelangganListener != null){
-            pelangganListener.onChange(this);
-        }
-    }
-            
+    public void setListener(PelangganListener listener) {
+        this.listener = listener;
+    }       
     
     public String getNama() {
         return nama;
@@ -43,6 +36,7 @@ public class PelangganModel {
 
     public void setNama(String nama) {
         this.nama = nama;
+        fileOnChange();
     }
 
     public String getEmail() {
@@ -51,6 +45,7 @@ public class PelangganModel {
 
     public void setEmail(String email) {
         this.email = email;
+        fileOnChange();
     }
 
     public String getNoTelp() {
@@ -59,15 +54,25 @@ public class PelangganModel {
 
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
+        fileOnChange();
+    }
+    
+    protected void fileOnChange(){
+        if(listener!=null){
+            listener.onChange(this);
+        }
     }
     
     public void resetForm(){
         setNama("");
         setEmail("");
         setNoTelp("");
+        
     }
-    public void simpanForm(){
-        JOptionPane.showMessageDialog(null, "Berhasil Disimpan");
+    
+     public void simpanForm(){
+        JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
         resetForm();
+        
     }
 }

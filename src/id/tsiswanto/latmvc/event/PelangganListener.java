@@ -15,6 +15,6 @@ import id.tsiswanto.latmvc.model.PelangganModel;
  */
 public interface PelangganListener {
     
-    public void onChange(PelangganModel Pelanggan);
+    public void onChange(PelangganModel listener);
     
 }

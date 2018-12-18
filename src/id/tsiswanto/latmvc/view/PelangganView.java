@@ -20,7 +20,7 @@ public class PelangganView extends javax.swing.JFrame implements PelangganListen
         controller = new PelangganController();
         model = new PelangganModel();
         
-        model.setPelangganListener(this);
+        model.setListener(this);
         controller.setModel(model);
         
         initComponents();
@@ -237,7 +237,7 @@ public class PelangganView extends javax.swing.JFrame implements PelangganListen
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void onChange(PelangganModel Pelanggan) {
+    public void onChange(PelangganModel listener) {
         txtNama.setText(model.getNama());
         txtEmail.setText(model.getEmail());
         txtTelp.setText(model.getNoTelp());
